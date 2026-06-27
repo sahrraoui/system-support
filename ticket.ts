@@ -94,6 +94,9 @@ router.get("/tickets/:id",(req,res) =>{
     if (!ticket) {
       return res.status(404).json({error: "ticket not found"})
     }
+    const messageResult =
+    db.prepare(`INSERT INTO messages (ticket_id, sender_type, body) VALUES (?, ?, ?)`).run(ticketId,sender_type,body)
+    const messageId = messageResult.lastInsertRowid as Number;
     }
 )
 
