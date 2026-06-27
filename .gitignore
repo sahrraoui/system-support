@@ -51,3 +51,6 @@ temp/
 package-lock.json
 yarn.lock
 pnpm-lock.yaml
+data/support.db
+data/support.db-shm
+data/support.db-wal
