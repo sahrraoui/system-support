@@ -54,3 +54,6 @@ pnpm-lock.yaml
 data/support.db
 data/support.db-shm
 data/support.db-wal
+data/test.db-wal
+data/test.db
+data/test.db-shm

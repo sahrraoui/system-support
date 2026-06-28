@@ -1,30 +1,26 @@
 
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 
+const transporter = nodemailer.createTransport({
+  host: "localhost",
+  port: 1025,
+  ignoreTLS: true,
+});
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-export async function sendTicketCreatedEmail(emailaddr:string,ticketSubjet:string) {
-  const {data,error}= await resend.emails.send({
-    
-    from: "Acme <onboarding@resend.dev>",
+export async function sendTicketCreatedEmail(emailaddr: string, ticketSubject: string) {
+  await transporter.sendMail({
+    from: "support@support.com",
     to: emailaddr,
-    subject: "we receive your ticket",
-    html: `<strong>${ticketSubjet}</strong>`
-  })
-if (error) {
-  console.error(error)
-  
+    subject: "We received your ticket",
+    html: `<strong>${ticketSubject}</strong>`,
+  });
 }
 
-}
-export async function sendAdminReplyEmail (remail:string,replyBody:string) {
-const {data , error} = await resend.emails.send({
-  from:"Acme <onboarding@resend.dev>",
-  to:remail,
-  subject:"New reply to your ticket",
-  html:`${replyBody}`
-  
-})
-if (error) { console.error(error) }  
+export async function sendAdminReplyEmail(remail: string, replyBody: string) {
+  await transporter.sendMail({
+    from: "support@support.com",
+    to: remail,
+    subject: "New reply to your ticket",
+    html: replyBody,
+  });
 }
