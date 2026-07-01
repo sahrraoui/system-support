@@ -99,7 +99,7 @@ router.get("/tickets/:id",(req,res) =>{
     if (sender_type !== "user"  && sender_type !== "admin") {
     return res.status(400).json({error:
       "operation not acceptaed"
-    })
+    }) 
     }
     const ticket = db.prepare(`SELECT * FROM tickets where id = ?`).get(ticketId)
     if (!ticket) {
