@@ -26,4 +26,4 @@ CREATE TABLE
         file_type TEXT NOT NULL,
         size INTEGER NOT NULL,
         FOREIGN KEY (message_id) REFERENCES messages (id) ON DELETE CASCADE
-    );
+    ); 
